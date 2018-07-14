@@ -1,0 +1,41 @@
+@import "../styles";
+
+h1{
+  margin-bottom: 40px;
+  font-family: $raleway;
+  font-weight: normal;
+}
+
+.posts-panel{
+  position: relative;
+  top: 50px;
+  left: 0;
+  right: 0;
+  font-family: $raleway;
+  font-weight: normal;
+  margin: auto;
+  color: $text-color;
+  padding: 35px 50px 50px 35px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: $panel-color;
+  box-shadow: 8px 8px 5px  $box-shadow-color;
+  max-width: 420px;
+  height: auto;
+  .start-link{
+    border: 1px solid $text-color;
+    padding: 6px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    &:hover{
+      background-color: $darker-theme;
+    }
+  }
+  h4{
+    font-family: $raleway;
+    font-weight: normal;
+    margin: 40px 0;
+  }
+}

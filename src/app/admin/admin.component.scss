@@ -1,0 +1,47 @@
+@import "../../styles";
+
+.users-table{
+  position: relative;
+  top: 50px;
+  .delete-user-icon{
+    color: #abe4f8;
+    cursor: pointer;
+    &:hover{
+      color: #f96859;
+    }
+  }
+
+  .edit-user-icon{
+    color: #abe4f8;
+    cursor: pointer;
+    margin-right: 30px;
+    &:hover{
+      color: #f9c06a;
+    }
+  }
+}
+
+.dev-tools{
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.user-edit-button{
+  margin-right: 20px;
+}
+
+
+
+@media only screen and (max-width: 550px) {
+  .users-table {
+    padding: 0;
+    table{
+      text-align: center;
+      vertical-align: middle;
+      th{
+        padding: 0;
+      }
+    }
+  }
+}
