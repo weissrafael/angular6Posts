@@ -1,6 +1,6 @@
 <div class="dev-tools">
   <button class="btn btn-primary" (click)="populate()" *ngIf="users.length <= 0">Populate</button>
-  <button class="btn btn-warning" (click)="clearUsers()" *ngIf="users.length > 0">Clear</button>
+  <button class="btn btn-warning" (click)="clearUsers()" *ngIf="users.length > 0">Clear All</button>
 </div>
 
 <div class="users-table">
@@ -13,7 +13,7 @@
       <th scope="col">Role</th>
       <th scope="col">Name</th>
       <th scope="col">
-        <i class="fa fa-pencil-alt edit-user-icon" (click)="setNewUserId()" data-toggle="modal" data-target="#exampleModal2"></i>
+        <i class="fa fa-pencil-alt edit-user-icon" (click)="setNewUserId()" data-toggle="modal" data-target="#adminModal2"></i>
       </th>
     </tr>
     </thead>
@@ -25,7 +25,7 @@
       <td>{{user.role}}</td>
       <td>{{user.name}}</td>
       <td>
-        <i class="fa fa-pencil-alt edit-user-icon" (click)="userBeingEdited(user)" data-toggle="modal" data-target="#exampleModal"></i>
+        <i class="fa fa-pencil-alt edit-user-icon" (click)="userBeingEdited(user)" data-toggle="modal" data-target="#adminModal"></i>
         <i class="fa fa-trash delete-user-icon" (click)="deleteUser(user)"></i>
       </td>
     </tr>
@@ -33,11 +33,11 @@
   </table>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editing {{editingThisUser.name}}</h5>
+        <h5 class="modal-title" id="adminModalLabel">Editing {{editingThisUser.name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="clearUserChanges()" >&times;</span>
         </button>
@@ -77,11 +77,11 @@
   </div>
 </div>
 
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+<div class="modal fade" id="adminModal2" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel2" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel2">Creating User {{creatingThisUser.name}}</h5>
+        <h5 class="modal-title" id="adminModalLabel2">Creating User {{creatingThisUser.name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="clearUserChanges()" >&times;</span>
         </button>

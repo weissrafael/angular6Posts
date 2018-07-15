@@ -1,3 +1,37 @@
-<p>
-  post-list works!
-</p>
+<div class="dev-tools">
+  <button class="btn btn-primary" (click)="populate()" *ngIf="posts.length <= 0">Populate</button>
+  <button class="btn btn-warning" (click)="clearPosts()" *ngIf="posts.length > 0">Clear All</button>
+</div>
+
+<div class="container create-post">
+  <div class="form-group">
+    <label for="postFormControlTextarea1">Create a new post</label>
+    <textarea class="form-control" id="postFormControlTextarea1" rows="3" [(ngModel)]="creatingThisPost.message" [value]="creatingThisPost.message" [ngModelOptions]="{standalone: true}"></textarea>
+  </div>
+  <button class="btn btn-primary post-button" (click)="addNewPost()">Post</button>
+</div>
+
+
+
+<div class="container post-list">
+  <div class="post" *ngFor="let post of posts">
+
+    <h5 class="owner-name">
+      {{post.ownerName}}
+      <i class="fa fa-window-close delete-post-icon" (click)="deletePost(post)"></i>
+    </h5>
+    <div class="container">
+      <p class="post-message" *ngIf="!post.beingEdited">
+        {{post.message}}
+      </p>
+      <textarea *ngIf="post.beingEdited" class="form-control" rows="3" [(ngModel)]="editingThisPost.message" [value]="editingThisPost.message" [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+    <i class="fa fa-pencil-alt edit-post-icon" *ngIf="!post.beingEdited" (click)="postBeingEdited(post)"></i>
+    <i class="fa fa-check-circle save-post-icon" *ngIf="post.beingEdited" (click)="applyPostChanges(post)"></i>
+    <i class="fa fa-times-circle cancel-post-icon" *ngIf="post.beingEdited" (click)="cancelPostEdition(post)"></i>
+
+
+
+
+  </div>
+</div>
