@@ -1,37 +1,64 @@
 <div class="dev-tools">
-  <button class="btn btn-primary" (click)="populate()" *ngIf="posts.length <= 0">Populate</button>
-  <button class="btn btn-warning" (click)="clearPosts()" *ngIf="posts.length > 0">Clear All</button>
+  <button class="btn btn-primary" (click)="populate()" *ngIf="posts.length <= 0">Populate Posts</button>
+  <button class="btn btn-warning" (click)="clearPosts()" *ngIf="posts.length > 0">Clear All Posts</button>
 </div>
 
 <div class="container create-post">
-  <div class="form-group">
-    <label for="postFormControlTextarea1">Create a new post</label>
-    <textarea class="form-control" id="postFormControlTextarea1" rows="3" [(ngModel)]="creatingThisPost.message" [value]="creatingThisPost.message" [ngModelOptions]="{standalone: true}"></textarea>
-  </div>
+  <form autocomplete="off">
+    <div class="form-group autocomplete">
+      <label for="postFormControlTextarea1">Create a new post</label>
+      <textarea
+        class="form-control"
+        id="postFormControlTextarea1"
+        rows="3"
+        [(ngModel)]="creatingThisPost.message"
+        [value]="creatingThisPost.message"
+        [ngModelOptions]="{standalone: true}"
+        (keyup)="checkEnterPressed($event)"
+      ></textarea>
+    </div>
+  </form>
   <button class="btn btn-primary post-button" (click)="addNewPost()">Post</button>
 </div>
 
 
 
 <div class="container post-list">
-  <div class="post" *ngFor="let post of posts">
-
+  <div class="post" *ngFor="let post of posts" (mouseleave)="closeUserPopUp(post)">
     <h5 class="owner-name">
-      {{post.ownerName}}
+      <span class="user-name" (mouseover)="openUserPopUp(post)">{{post.user.name}}</span>
       <i class="fa fa-window-close delete-post-icon" (click)="deletePost(post)"></i>
     </h5>
+    <div class="user-popup" *ngIf="post.userPopUp" [ngClass]="{'slided-user-popup' : slidePanel}">
+      <p>{{post.user.name}}</p>
+      <p>{{post.user.role}}</p>
+      <p>{{post.user.phone}}</p>
+      <p>{{post.user.username}}</p>
+    </div>
+
     <div class="container">
-      <p class="post-message" *ngIf="!post.beingEdited">
+      <p class="post-message" [ngClass]="{'short-message' : post.userPopUp}" *ngIf="!post.beingEdited">
         {{post.message}}
       </p>
-      <textarea *ngIf="post.beingEdited" class="form-control" rows="3" [(ngModel)]="editingThisPost.message" [value]="editingThisPost.message" [ngModelOptions]="{standalone: true}"></textarea>
+      <form autocomplete="off">
+        <div class="autocomplete" [ngClass]="{'smaller-post' : post.userPopUp}">
+                <textarea
+                  *ngIf="post.beingEdited"
+                  [ngClass]="{'short-area-message' : post.userPopUp}"
+                  class="form-control post-message"
+                  id="postFormControlTextarea"
+                  rows="3"
+                  [(ngModel)]="editingThisPost.message"
+                  [value]="editingThisPost.message"
+                  [ngModelOptions]="{standalone: true}"
+                  (keyup)="checkEnterPressedOnEdit($event)"
+                ></textarea>
+        </div>
+      </form>
     </div>
     <i class="fa fa-pencil-alt edit-post-icon" *ngIf="!post.beingEdited" (click)="postBeingEdited(post)"></i>
     <i class="fa fa-check-circle save-post-icon" *ngIf="post.beingEdited" (click)="applyPostChanges(post)"></i>
     <i class="fa fa-times-circle cancel-post-icon" *ngIf="post.beingEdited" (click)="cancelPostEdition(post)"></i>
-
-
-
-
   </div>
 </div>
+

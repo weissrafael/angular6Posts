@@ -27,15 +27,58 @@
   top: 310px;
   width: 530px;
   color: #FEFEFE;
+  .user-name{
+    &:hover{
+      color: #92c9cb;
+    }
+  }
+  .user-popup{
+    position: relative;
+    float: left;
+    overflow: hidden;
+    z-index: 3;
+    background-color: #92c9cb;
+    width: 150px;
+    border-radius: 10px;
+    top: -200px;
+    padding: 13px;
+    -webkit-transition: top 1s, opacity 0.5s;
+    transition: top 1s, opacity 0.5s;
+    opacity: 0;
+    p{
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .slided-user-popup{
+    top: 0;
+    opacity: 1;
+  }
   .post{
     width: auto;
-    min-height: 80px;
+    min-height: 175px;
+    max-height: 350px;
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
     background-color: rgba(24, 28, 39, 0.85);
     .post-message{
+      position: absolute;
+      max-height: 300px;
       word-break: break-all;
+      overflow-y: auto;
+      width: 430px;
+      -webkit-transition: width 1s;
+      transition: width 1s;
+
+    }
+    .short-message{
+      width: 300px;
+      right: 45px;
+    }
+    .short-area-message{
+      width: 300px;
+      right: 5px;
     }
     .delete-post-icon{
       float: right;
@@ -46,6 +89,9 @@
       }
     }
     .edit-post-icon{
+      position: relative;
+      top: 105px;
+      float: right;
       color: #abe4f8;
       cursor: pointer;
       &:hover{
@@ -53,14 +99,20 @@
       }
     }
     .save-post-icon{
+      position: relative;
+      top: 110px;
+      float: right;
       color: #abe4f8;
       cursor: pointer;
-      margin-right: 20px;
       &:hover{
         color: #aff990;
       }
     }
     .cancel-post-icon{
+      position: relative;
+      top: 110px;
+      float: right;
+      margin-right: 20px;
       color: #abe4f8;
       cursor: pointer;
       &:hover{
@@ -69,3 +121,6 @@
     }
   }
 }
+
+* { box-sizing: border-box; }
+
