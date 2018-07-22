@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {POSTS} from '../mock-posts';
-import * as _ from '/home/rafael/Desktop/rwPosts/node_modules/lodash';
+import * as _ from '../../../node_modules/lodash';
 import {USERS} from '../mock-users';
 
 const date = new Date();
