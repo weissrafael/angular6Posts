@@ -1,4 +1,4 @@
-This app was a coding challange task: Develop a dynamic online posts.
+Simple post app with some cool functions.
 
 if you dont have npm: https://nodejs.org/en/
 
@@ -14,10 +14,6 @@ if it doesnt open then you may need to run:
 
 $ npm install --save-dev @angular/cli@latest
 
-To run the tests run:
-
-$ ng test
-
 .
 .
 .
@@ -27,25 +23,13 @@ $ ng test
 app features:
 
 .
-allow key-enter pressing on input to go to the next page, if the value is not empty.
+Autocomplete user name after typing @, or phone with #.
 
 .
-working native browser back / next button.
+Responsive works on mobile and web
 
 .
-dont allow user to set url by himself.
+Regex Input validations
 
 .
-friendly UX and UI.
-
-.
-responsive and all interface elements made without Bootstrap or any other library.
-
-.
-dynamic and easy to add and remove many questions you want, just add another question on mock-users.ts to try out.
-
-.
-20 simple test cases.
-
-.
-easy to change colors and fonts with SASS variables.
+Friendly UX with Swal and css animations

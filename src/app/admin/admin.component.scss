@@ -43,11 +43,19 @@
   .users-table {
     padding: 0;
     table{
+      padding: 0;
       text-align: center;
       vertical-align: middle;
       th{
         padding: 0;
       }
+      td{
+        padding: 1px;
+      }
+      tr{
+        padding: 0;
+      }
+
     }
   }
 }
