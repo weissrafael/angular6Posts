@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
 .create-post{
+  z-index: 123;
+  font-family: 'Inconsolata', monospace;
   position: absolute;
   left: 0;
   right: 0;
-  top: 80px;
-  width: 500px;
-  background-color: rgba(24, 28, 39, 0.85);
-  border-radius: 10px;
+  top: 130px;
+  max-width: 500px;
+  background-color: #1b1f2b;
+  border-radius: 4px;
   color: #FEFEFE;
   padding-top: 20px;
   .post-button{
@@ -21,13 +25,15 @@
 }
 
 .post-list{
+  font-family: 'Inconsolata', monospace;
   position: absolute;
   left: 0;
   right: 0;
-  top: 310px;
+  top: 355px;
   width: 530px;
   color: #FEFEFE;
   .user-name{
+    cursor: pointer;
     &:hover{
       color: #92c9cb;
     }
@@ -39,7 +45,7 @@
     z-index: 3;
     background-color: #92c9cb;
     width: 150px;
-    border-radius: 10px;
+    border-radius: 4px;
     top: -200px;
     padding: 13px;
     -webkit-transition: top 1s, opacity 0.5s;
@@ -60,12 +66,12 @@
     max-height: 350px;
     padding: 10px;
     margin-bottom: 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     background-color: rgba(24, 28, 39, 0.85);
     .post-message{
       position: absolute;
-      max-height: 300px;
-      word-break: break-all;
+      max-height: 100px;
+      word-break: break-word;
       overflow-y: auto;
       width: 430px;
       -webkit-transition: width 1s;

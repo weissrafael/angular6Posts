@@ -6,5 +6,6 @@ export class Post {
   date: string;
   beingEdited: boolean;
   userPopUp: boolean;
+  slidePanel: boolean;
   user: User;
 }

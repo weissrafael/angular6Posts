@@ -24,16 +24,16 @@
 
 
 <div class="container post-list">
-  <div class="post" *ngFor="let post of posts" (mouseleave)="closeUserPopUp(post)">
+  <div class="post" *ngFor="let post of posts">
     <h5 class="owner-name">
-      <span class="user-name" (mouseover)="openUserPopUp(post)">{{post.user.name}}</span>
+      <span class="user-name" (click)="toggleUserPopUp(post)">{{post.user.name}}</span>
       <i class="fa fa-window-close delete-post-icon" (click)="deletePost(post)"></i>
     </h5>
-    <div class="user-popup" *ngIf="post.userPopUp" [ngClass]="{'slided-user-popup' : slidePanel}">
-      <p>{{post.user.name}}</p>
-      <p>{{post.user.role}}</p>
-      <p>{{post.user.phone}}</p>
-      <p>{{post.user.username}}</p>
+    <div class="user-popup" *ngIf="post.userPopUp" [ngClass]="{'slided-user-popup' : post.slidePanel}">
+      <p>{{ (post.user.name.length>13)? (post.user.name | slice:0:13)+'..':(post.user.name) }}</p>
+      <p>{{ (post.user.role.length>13)? (post.user.role | slice:0:13)+'..':(post.user.role) }}</p>
+      <p>{{ (post.user.phone.length>13)? (post.user.phone | slice:0:13)+'..':(post.user.phone)}}</p>
+      <p>{{ (post.user.username.length>13)? (post.user.username | slice:0:13)+'..':(post.user.username)}}</p>
     </div>
 
     <div class="container">

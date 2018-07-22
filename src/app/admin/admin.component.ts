@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { USERS } from '../mock-users';
-import * as _ from '/home/rafael/Desktop/rwPosts/node_modules/lodash';
-import {POSTS} from '../mock-posts';
+import * as _ from '../../../node_modules/lodash';
 import swal from 'sweetalert';
-import $ from '/home/rafael/Desktop/angular6Posts/node_modules/jquery/dist/jquery.js';
 
 declare var jQuery: any;
 
@@ -21,13 +19,26 @@ export class AdminComponent implements OnInit {
     validations = { usernameValid: false, phoneValid: false, nameValid: false, roleValid: false, usernameInvalid: false, phoneInvalid: false, nameInvalid: false, roleInvalid: false };
 
     deleteUser(user): void {
-        for (let i = 0; i < this.users.length; i++) {
-            if (user.id === this.users[i].id) {
-                this.users.splice(i, 1);
-                this.updateUsers(this.users);
-                return;
-            }
-        }
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this user info!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    for (let i = 0; i < this.users.length; i++) {
+                        if (user.id === this.users[i].id) {
+                            this.users.splice(i, 1);
+                            this.updateUsers(this.users);
+                        }
+                    }
+                    swal("Poof! The user has been deleted!", {
+                        icon: "success",
+                    });
+                }
+            });
     }
 
     updateUsers(users): void {
@@ -43,15 +54,11 @@ export class AdminComponent implements OnInit {
     }
 
     validateUserForm(): boolean {
-        if (this.validations.roleValid && this.validations.nameValid && this.validations.usernameValid && this.validations.phoneValid) {
-          return true;
-        } else {
-            this.validateUsername();
-            this.validatePhone();
-            this.validateName();
-            this.validateRole();
-            return false;
-        }
+        this.validateUsername();
+        this.validatePhone();
+        this.validateName();
+        this.validateRole();
+        return this.validations.roleValid && this.validations.nameValid && this.validations.usernameValid && this.validations.phoneValid;
     }
 
     validateUsername(): void {
