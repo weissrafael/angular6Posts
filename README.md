@@ -8,6 +8,8 @@ $ npm install -g @angular/cli
 
 Open the posts-app directory then run:
 
+$ npm install
+
 $ ng serve --open
 
 if it doesnt open then you may need to run:
