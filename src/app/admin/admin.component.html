@@ -118,7 +118,7 @@
             <p *ngIf="validations.phoneInvalid">{{phoneErrorMsg}}</p>
           </div>
           <button type="button" class="btn btn-secondary user-edit-button" (click)="clearUserChanges()" data-dismiss="modal">Cancel</button>
-          <button type="submit" class="btn btn-primary user-edit-button" (click)="applyUserChanges(tempUser); clearUserChanges()" data-dismiss="modal">Save</button>
+          <button type="submit" class="btn btn-primary user-edit-button" (click)="applyUserChanges(tempUser)">Save</button>
         </form>
       </div>
       <div class="modal-footer">
