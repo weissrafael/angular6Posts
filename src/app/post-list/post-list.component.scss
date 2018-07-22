@@ -21,6 +21,7 @@
 .dev-tools{
   position: relative;
   top: 20px;
+  width: 100px;
   left: 20px;
 }
 
@@ -30,7 +31,7 @@
   left: 0;
   right: 0;
   top: 355px;
-  width: 530px;
+  max-width: 530px;
   color: #FEFEFE;
   .user-name{
     cursor: pointer;
@@ -62,6 +63,7 @@
   }
   .post{
     width: auto;
+    max-width: 500px;
     min-height: 175px;
     max-height: 350px;
     padding: 10px;
@@ -73,18 +75,19 @@
       max-height: 100px;
       word-break: break-word;
       overflow-y: auto;
-      width: 430px;
-      -webkit-transition: width 1s;
-      transition: width 1s;
+      max-width: 80%;
+      left: 50px;
+      -webkit-transition: max-width 1s, left 0.8s;
+      transition: max-width 1s, left 0.8s;
 
     }
     .short-message{
-      width: 300px;
-      right: 45px;
+      max-width: 55%;
+      left: 35%;
     }
     .short-area-message{
-      width: 300px;
-      right: 5px;
+      left: 33%;
+      max-width: 65%;
     }
     .delete-post-icon{
       float: right;
@@ -123,6 +126,21 @@
       cursor: pointer;
       &:hover{
         color: #f9947f;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .post-list {
+    .post {
+      .short-message {
+        max-width: 43%;
+        left: 46%;
+      }
+      .short-area-message {
+        left: 43%;
+        max-width: 60%;
       }
     }
   }
