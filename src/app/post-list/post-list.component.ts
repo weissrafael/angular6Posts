@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {POSTS} from '../mock-posts';
 import * as _ from '../../../node_modules/lodash';
-import {USERS} from '../mock-users';
+import swal from 'sweetalert';
 
 const date = new Date();
 
@@ -32,7 +32,7 @@ export class PostListComponent implements OnInit {
             text: "Once deleted, you will not be able to recover this post!",
             icon: "warning",
             buttons: true,
-            dangerMode: true,
+            dangerMode: true
         })
             .then((willDelete) => {
                 if (willDelete) {
@@ -96,8 +96,8 @@ export class PostListComponent implements OnInit {
     }
 
     clearPostChanges(): void {
-        this.editingThisPost =   { id: 0, message: '', date: '', beingEdited: false, userPopUp: false,  user: {}};
-        this.creatingThisPost =   { id: 0, message: '', date: '', beingEdited: false, userPopUp: false,  user: {}};
+        this.editingThisPost =   { id: 0, message: '', date: '', beingEdited: false, userPopUp: false,  user: {}, slidePanel: false};
+        this.creatingThisPost =   { id: 0, message: '', date: '', beingEdited: false, userPopUp: false,  user: {}, slidePanel: false};
     }
 
     cancelPostEdition(post): void {
