@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { USERS } from '../mock-users';
 import * as _ from '../../../node_modules/lodash';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 declare var jQuery: any;
 
@@ -20,23 +20,22 @@ export class AdminComponent implements OnInit {
 
     deleteUser(user): void {
         swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this user info!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
+            title: 'Are you sure?',
+            text: 'All user data will be lost!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
                     for (let i = 0; i < this.users.length; i++) {
                         if (user.id === this.users[i].id) {
                             this.users.splice(i, 1);
                             this.updateUsers(this.users);
                         }
                     }
-                    swal("Poof! The user has been deleted!", {
-                        icon: "success",
-                    });
+                swal('Poof!', 'the user has been deleted!', 'success');
                 }
             });
     }
