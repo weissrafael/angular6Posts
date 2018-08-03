@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {POSTS} from '../mock-posts';
 import * as _ from '../../../node_modules/lodash';
-import * as _swal from 'sweetalert';
-import { SweetAlert } from 'sweetalert/typings/core';
-const swal: SweetAlert = _swal as any;
+import swal from 'sweetalert';
 
 const date = new Date();
 
@@ -29,7 +27,13 @@ export class PostListComponent implements OnInit {
     }
 
     deletePost(post): void {
-        swal('{title: "Are you sure?", text: "Once deleted, you will not be able to recover this post!", icon: "warning", buttons: true , dangerMode: true}')
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this post!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        })
             .then((willDelete) => {
                 if (willDelete) {
                     for (let i = 0; i < this.posts.length; i++) {
