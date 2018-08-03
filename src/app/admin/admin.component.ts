@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { USERS } from '../mock-users';
 import * as _ from '../../../node_modules/lodash';
-import * as swal from 'sweetalert';
+import * as _swal from 'sweetalert';
+import { SweetAlert } from 'sweetalert/typings/core';
+const swal: SweetAlert = _swal as any;
 
 declare var jQuery: any;
 
@@ -19,13 +21,7 @@ export class AdminComponent implements OnInit {
     validations = { usernameValid: false, phoneValid: false, nameValid: false, roleValid: false, usernameInvalid: false, phoneInvalid: false, nameInvalid: false, roleInvalid: false };
 
     deleteUser(user): void {
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this user info!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
+        swal('{ title: "Are you sure?", text: "Once deleted, you will not be able to recover this user info!", icon: "warning", buttons: true, dangerMode: true,}')
             .then((willDelete) => {
                 if (willDelete) {
                     for (let i = 0; i < this.users.length; i++) {
