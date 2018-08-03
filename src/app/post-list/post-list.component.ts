@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {POSTS} from '../mock-posts';
 import * as _ from '../../../node_modules/lodash';
-import swal from 'sweetalert';
+import * as swal from 'sweetalert';
 
 const date = new Date();
 

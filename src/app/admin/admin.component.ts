@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { USERS } from '../mock-users';
 import * as _ from '../../../node_modules/lodash';
-import swal from 'sweetalert';
+import * as swal from 'sweetalert';
 
 declare var jQuery: any;
 
